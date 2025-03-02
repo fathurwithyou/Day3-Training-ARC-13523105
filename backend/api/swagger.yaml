@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: User API
+  version: "1.0"
+  description: API for managing users with basic CRUD operations.
+paths:
+  /users:
+    get:
+      summary: Retrieve all users
+      responses:
+        "200":
+          description: A list of users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "500":
+          description: Server error.
+    post:
+      summary: Create a new user
+      requestBody:
+        description: User object to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+      responses:
+        "201":
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid request payload.
+        "500":
+          description: Server error.
+  /users/{id}:
+    put:
+      summary: Update an existing user
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to update.
+      requestBody:
+        description: Updated user object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+      responses:
+        "200":
+          description: User updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid ID or request payload.
+        "404":
+          description: User not found.
+        "500":
+          description: Server error.
+    delete:
+      summary: Delete a user
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to delete.
+      responses:
+        "200":
+          description: User deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User deleted
+        "400":
+          description: Invalid user ID.
+        "404":
+          description: User not found.
+        "500":
+          description: Server error.
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: johndoe@example.com
+    UserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: johndoe@example.com
+      required:
+        - name
+        - email
