@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "course_id": 1,
+    "score": 95
+  },
+  {
+    "id": 2,
+    "user_id": 1,
+    "course_id": 2,
+    "score": 88
+  },
+  {
+    "id": 3,
+    "user_id": 2,
+    "course_id": 1,
+    "score": 90
+  },
+  {
+    "id": 4,
+    "user_id": 2,
+    "course_id": 3,
+    "score": 85
+  }
+]

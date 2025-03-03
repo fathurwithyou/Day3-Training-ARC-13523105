@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "course_code": "CS101",
+      "name": "Introduction to Computer Science"
+    },
+    {
+      "id": 2,
+      "course_code": "MATH101",
+      "name": "Calculus I"
+    },
+    {
+      "id": 3,
+      "course_code": "PHY101",
+      "name": "Physics I"
+    },
+    {
+      "id": 4,
+      "course_code": "ENG101",
+      "name": "English Literature"
+    },
+    {
+      "id": 5,
+      "course_code": "HIST101",
+      "name": "World History"
+    }
+  ]
+  

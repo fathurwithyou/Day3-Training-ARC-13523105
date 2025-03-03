@@ -1,13 +1,14 @@
 [
-    {
-      "id": 1,
-      "name": "Alice",
-      "email": "alice@example.com"
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "email": "bob@example.com"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Alice",
+    "nim": "1234567890",
+    "email": "alice@example.com"
+  },
+  {
+    "id": 2,
+    "name": "Bob",
+    "nim": "123456789",
+    "email": "bob@example.com"
+  }
+]
