@@ -1,0 +1,258 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+#usersTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+#usersTable th,
+#usersTable td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+#usersTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+#usersTable tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#usersTable tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+#usersTable tbody tr.selected {
+  background-color: #e0f0ff;
+}
+
+.details-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.details-panel h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.details-panel h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  margin-bottom: 20px;
+}
+
+.courses-list {
+  padding-left: 20px;
+}
+
+.courses-list li {
+  margin-bottom: 8px;
+}
+
+.scores-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scores-table th,
+.scores-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.scores-table th {
+  background-color: #f2f2f2;
+}
+
+.close-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.close-btn:hover {
+  background-color: #d32f2f;
+}
+
+.error {
+  color: #f44336;
+  padding: 10px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.details-panel.error {
+  background-color: #fff8f8;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333;
+}
+
+#addUserForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#addUserForm label {
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#addUserForm input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+#addUserForm button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#addUserForm button:hover {
+  background-color: #45a049;
+}
+
+#addUser {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#addUser:hover {
+  background-color: #45a049;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  z-index: 1010;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+.notification.fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#usersTable th:last-child,
+#usersTable td:last-child {
+  width: 100px;
+  text-align: center;
+}
