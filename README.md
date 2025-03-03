@@ -140,10 +140,9 @@ Open the `index.html` file in your browser, or use **Live Server** if using VS C
 │
 ├── 📁 frontend
 │   ├── 📄 index.html            # Main UI
-│   ├── 📄 styles.css            # Styling for UI
-│   ├── 📄 main.js               # Handles API interactions
-│   ├── 📄 modal.js              # Handles modal interactions
-│
+│   ├── 📁 css                   # Styling for UI
+│   ├── 📁 js                    # logic
+│   
 ├── 📄 README.md                 # Documentation
 ```
 
