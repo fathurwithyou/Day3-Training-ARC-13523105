@@ -42,13 +42,11 @@ func GetStudentCourses(c *fiber.Ctx) error {
 		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 	}
 
-	// Build a course lookup map: course ID -> Course
 	courseMap := make(map[int]models.Course)
 	for _, course := range courses {
 		courseMap[course.ID] = course
 	}
 
-	// Build a map of user IDs to a set of course IDs (using string keys)
 	userCourseIDs := make(map[int]map[int]bool)
 	for _, es := range examScores {
 		if userCourseIDs[es.UserID] == nil {

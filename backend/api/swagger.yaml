@@ -1,8 +1,9 @@
 openapi: 3.0.0
 info:
-  title: User API
+  title: User & Exam Scores API
   version: "1.0"
-  description: API for managing users with basic CRUD operations.
+  description: API for managing users, exam scores, and student courses.
+
 paths:
   /users:
     get:
@@ -38,6 +39,7 @@ paths:
           description: Invalid request payload.
         "500":
           description: Server error.
+
   /users/{id}:
     put:
       summary: Update an existing user
@@ -94,6 +96,127 @@ paths:
           description: User not found.
         "500":
           description: Server error.
+
+  /examscores:
+    post:
+      summary: Create an exam score
+      requestBody:
+        description: Exam score object to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExamScoreInput"
+      responses:
+        "201":
+          description: Exam score created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExamScore"
+        "400":
+          description: Invalid request payload.
+        "500":
+          description: Server error.
+
+  /examscores/{id}:
+    get:
+      summary: Retrieve exam scores for a user
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user whose exam scores are retrieved.
+      responses:
+        "200":
+          description: List of exam scores for the user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ExamScore"
+        "400":
+          description: Invalid user ID.
+        "404":
+          description: User not found.
+        "500":
+          description: Server error.
+
+    put:
+      summary: Update an existing exam score
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the exam score to update.
+      requestBody:
+        description: Updated exam score object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExamScoreInput"
+      responses:
+        "200":
+          description: Exam score updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExamScore"
+        "400":
+          description: Invalid request payload.
+        "404":
+          description: Exam score not found.
+        "500":
+          description: Server error.
+
+    delete:
+      summary: Delete an exam score
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the exam score to delete.
+      responses:
+        "200":
+          description: Exam score deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Exam score deleted
+        "400":
+          description: Invalid exam score ID.
+        "404":
+          description: Exam score not found.
+        "500":
+          description: Server error.
+
+  /studentcourses:
+    get:
+      summary: Retrieve student course information
+      responses:
+        "200":
+          description: A list of users with their enrolled courses.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StudentCourses"
+        "500":
+          description: Server error.
+
 components:
   schemas:
     User:
@@ -108,6 +231,7 @@ components:
         email:
           type: string
           example: johndoe@example.com
+
     UserInput:
       type: object
       properties:
@@ -120,3 +244,62 @@ components:
       required:
         - name
         - email
+
+    ExamScore:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 1
+        course_code:
+          type: string
+          example: CS101
+        score:
+          type: integer
+          example: 95
+
+    ExamScoreInput:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          example: 1
+        course_code:
+          type: string
+          example: CS101
+        score:
+          type: integer
+          example: 95
+      required:
+        - user_id
+        - course_code
+        - score
+
+    StudentCourses:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        courses:
+          type: array
+          items:
+            type: object
+            properties:
+              course:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 101
+                  name:
+                    type: string
+                    example: Introduction to Programming
+                  course_code:
+                    type: string
+                    example: CS101
+              score:
+                type: integer
+                example: 95
